@@ -1,5 +1,29 @@
 # Changelog
 
+## [1.1.0] - 2026-01-18
+
+### Added
+
+- **Line Highlight Control**
+  - New `editor.renderLineHighlight` setting support
+  - Options: All (default), Line Only, Gutter Only, None
+  - Helps users with light sensitivity reduce visual distractions
+
+### Improved
+
+- **Live Preview**
+  - Added line numbers gutter to side-by-side comparison
+  - Preview now shows line highlight effect in real-time
+  - More accurate representation of VS Code editor appearance
+
+### Technical
+
+- Added `LineHighlightType` for type-safe highlight mode handling
+- Updated settings manager to read/write `renderLineHighlight`
+- Enhanced webview with gutter styling using VS Code theme variables
+
+---
+
 ## [1.0.0] - 2026-01-17
 
 ### Added
@@ -25,11 +49,11 @@
   - Human-readable rationale per recommended setting
 
 - **Editor Settings Controls**
-  - Font Size (12–32px)
-  - Line Height (Auto–2.2x)
-  - Letter Spacing (0–1.5px)
-  - Font Weight (300–700)
-  - Cursor Width (1–5px)
+  - Font Size (12-32px)
+  - Line Height (Auto-2.2x)
+  - Letter Spacing (0-1.5px)
+  - Font Weight (300-700)
+  - Cursor Width (1-5px)
 
 - **Live Preview**
   - Side-by-side comparison (Original vs Preview)

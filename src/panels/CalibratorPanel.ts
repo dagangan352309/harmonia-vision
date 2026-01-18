@@ -6,7 +6,7 @@ import {
     RecommendationOutput,
     EditorSettings,
 } from '../logic/recommendations';
-import { SettingsManager, EditorSettingsSnapshot } from '../logic/settingsManager';
+import { SettingsManager, EditorSettingsSnapshot, LineHighlightType } from '../logic/settingsManager';
 import { debounce } from '../utils/throttle';
 import { getTranslations } from '../i18n/translations';
 
@@ -25,6 +25,7 @@ interface SettingsPayload {
     letterSpacing: number;
     fontWeight: string;
     cursorWidth: number;
+    renderLineHighlight?: LineHighlightType;
 }
 
 // ─────────────────────────────────────────────────────────────────────────────
@@ -293,6 +294,7 @@ export class CalibratorPanel implements vscode.Disposable {
             letterSpacing: settings.letterSpacing,
             fontWeight: settings.fontWeight,
             cursorWidth: settings.cursorWidth,
+            renderLineHighlight: settings.renderLineHighlight,
         };
     }
 

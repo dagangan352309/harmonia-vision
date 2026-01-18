@@ -50,12 +50,15 @@ export interface RecommendationInput {
     currentSettings?: CurrentSettings;  // Optional: use as baseline floor
 }
 
+export type LineHighlightType = 'none' | 'gutter' | 'line' | 'all';
+
 export interface EditorSettings {
     fontSize: number;        // px, typical range 14-24 for comfort
     lineHeight: number;      // ratio (0 = auto, 1.4-2.0 for custom), NOT pixels
     letterSpacing: number;   // px, typical range 0.0-1.5
     fontWeight: string;      // "normal" (400), "500", etc.
     cursorWidth: number;     // px, typical range 1-5
+    renderLineHighlight?: LineHighlightType; // 'none', 'gutter', 'line', 'all'
 }
 
 export interface SettingRationale {

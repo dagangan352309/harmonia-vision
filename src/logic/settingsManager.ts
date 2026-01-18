@@ -16,12 +16,15 @@ import * as vscode from 'vscode';
 // Types
 // ─────────────────────────────────────────────────────────────────────────────
 
+export type LineHighlightType = 'none' | 'gutter' | 'line' | 'all';
+
 export interface EditorSettingsSnapshot {
     fontSize: number | undefined;
     lineHeight: number | undefined;
     letterSpacing: number | undefined;
     fontWeight: string | undefined;
     cursorWidth: number | undefined;
+    renderLineHighlight: LineHighlightType | undefined;
     capturedAt?: number; // Timestamp when snapshot was taken
 }
 
@@ -87,6 +90,7 @@ export class SettingsManager {
             letterSpacing: config.get<number>('letterSpacing'),
             fontWeight: config.get<string>('fontWeight'),
             cursorWidth: config.get<number>('cursorWidth'),
+            renderLineHighlight: config.get<LineHighlightType>('renderLineHighlight'),
             capturedAt: Date.now(),
         };
 
@@ -116,6 +120,7 @@ export class SettingsManager {
             letterSpacing: config.get<number>('letterSpacing'),
             fontWeight: config.get<string>('fontWeight'),
             cursorWidth: config.get<number>('cursorWidth'),
+            renderLineHighlight: config.get<LineHighlightType>('renderLineHighlight'),
         };
     }
 
@@ -191,6 +196,9 @@ export class SettingsManager {
             }
             if (settings.cursorWidth !== undefined) {
                 updates.push(config.update('cursorWidth', settings.cursorWidth, target));
+            }
+            if (settings.renderLineHighlight !== undefined) {
+                updates.push(config.update('renderLineHighlight', settings.renderLineHighlight, target));
             }
 
             await Promise.all(updates);

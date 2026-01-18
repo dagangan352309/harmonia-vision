@@ -58,6 +58,11 @@ export interface Translations {
     letterSpacing: string;
     fontWeight: string;
     cursorWidth: string;
+    lineHighlight: string;
+    lineHighlightNone: string;
+    lineHighlightGutter: string;
+    lineHighlightLine: string;
+    lineHighlightAll: string;
     auto: string;
     light: string;
     bold: string;
@@ -140,6 +145,11 @@ const en: Translations = {
     letterSpacing: 'Letter Spacing',
     fontWeight: 'Font Weight',
     cursorWidth: 'Cursor Width',
+    lineHighlight: 'Line Highlight',
+    lineHighlightNone: 'None',
+    lineHighlightGutter: 'Gutter Only',
+    lineHighlightLine: 'Line Only',
+    lineHighlightAll: 'All (Default)',
     auto: 'Auto',
     light: 'Light',
     bold: 'Bold',
@@ -222,6 +232,11 @@ const es: Translations = {
     letterSpacing: 'Espaciado de Letras',
     fontWeight: 'Grosor de Fuente',
     cursorWidth: 'Ancho del Cursor',
+    lineHighlight: 'Resaltado de Linea',
+    lineHighlightNone: 'Ninguno',
+    lineHighlightGutter: 'Solo Margen',
+    lineHighlightLine: 'Solo Linea',
+    lineHighlightAll: 'Todo (Por defecto)',
     auto: 'Auto',
     light: 'Ligero',
     bold: 'Negrita',

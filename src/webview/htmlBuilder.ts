@@ -135,6 +135,53 @@ export function getWebviewContent(
             visibility: visible;
             opacity: 1;
         }
+        /* Code Preview with Gutter */
+        .code-preview {
+            font-family: var(--vscode-editor-font-family, 'Consolas', 'Courier New', monospace);
+            font-size: 12px;
+            line-height: 1.5;
+        }
+        .code-line {
+            display: flex;
+            min-height: 1.5em;
+        }
+        .code-line .gutter {
+            width: 32px;
+            min-width: 32px;
+            padding: 0 8px;
+            text-align: right;
+            color: var(--vscode-editorLineNumber-foreground, #858585);
+            background: var(--vscode-editorGutter-background, transparent);
+            user-select: none;
+            flex-shrink: 0;
+        }
+        .code-line .code-content {
+            flex: 1;
+            padding-left: 8px;
+            white-space: pre;
+        }
+        /* Line highlight modes */
+        .code-preview[data-highlight="all"] .active-line .gutter {
+            color: var(--vscode-editorLineNumber-activeForeground, #c6c6c6);
+            background: var(--vscode-editor-lineHighlightBackground, rgba(255,255,255,0.1));
+        }
+        .code-preview[data-highlight="all"] .active-line .code-content {
+            background: var(--vscode-editor-lineHighlightBackground, rgba(255,255,255,0.1));
+        }
+        .code-preview[data-highlight="line"] .active-line .gutter {
+            color: var(--vscode-editorLineNumber-activeForeground, #c6c6c6);
+        }
+        .code-preview[data-highlight="line"] .active-line .code-content {
+            background: var(--vscode-editor-lineHighlightBackground, rgba(255,255,255,0.1));
+        }
+        .code-preview[data-highlight="gutter"] .active-line .gutter {
+            color: var(--vscode-editorLineNumber-activeForeground, #c6c6c6);
+            background: var(--vscode-editor-lineHighlightBackground, rgba(255,255,255,0.1));
+        }
+        .code-preview[data-highlight="none"] .active-line .gutter,
+        .code-preview[data-highlight="none"] .active-line .code-content {
+            /* No highlight */
+        }
     </style>
 </head>
 <body class="p-6 max-w-3xl mx-auto">
@@ -408,6 +455,18 @@ export function getWebviewContent(
                     <span>5px</span>
                 </div>
             </div>
+
+            <div>
+                <div class="flex justify-between items-center mb-2">
+                    <label class="text-sm font-medium">${t.lineHighlight}</label>
+                </div>
+                <select id="renderLineHighlight" class="bordered w-full px-3 py-2 bg-vscode-bg rounded text-sm cursor-pointer">
+                    <option value="all">${t.lineHighlightAll}</option>
+                    <option value="line">${t.lineHighlightLine}</option>
+                    <option value="gutter">${t.lineHighlightGutter}</option>
+                    <option value="none">${t.lineHighlightNone}</option>
+                </select>
+            </div>
         </div>
     </section>
 
@@ -431,30 +490,34 @@ export function getWebviewContent(
                 <div class="px-3 py-2 bg-vscode-input-bg border-b border-vscode-border">
                     <span class="text-xs font-semibold">${t.original}</span>
                 </div>
-                <pre id="originalPreview" class="p-3 text-xs leading-relaxed overflow-auto h-40 m-0 bg-vscode-bg"><code class="whitespace-pre">function calculateTotal(items) {
-    let total = 0;
-    for (const item of items) {
-        total += item.price * item.qty;
-    }
-    return total.toFixed(2);
-}
-
-const order = calculateTotal(cart);</code></pre>
+                <div id="originalPreview" class="code-preview overflow-auto h-40 m-0 bg-vscode-bg" data-highlight="all">
+                    <div class="code-line"><span class="gutter">1</span><span class="code-content">function calculateTotal(items) {</span></div>
+                    <div class="code-line"><span class="gutter">2</span><span class="code-content">    let total = 0;</span></div>
+                    <div class="code-line active-line"><span class="gutter">3</span><span class="code-content">    for (const item of items) {</span></div>
+                    <div class="code-line"><span class="gutter">4</span><span class="code-content">        total += item.price * item.qty;</span></div>
+                    <div class="code-line"><span class="gutter">5</span><span class="code-content">    }</span></div>
+                    <div class="code-line"><span class="gutter">6</span><span class="code-content">    return total.toFixed(2);</span></div>
+                    <div class="code-line"><span class="gutter">7</span><span class="code-content">}</span></div>
+                    <div class="code-line"><span class="gutter">8</span><span class="code-content"></span></div>
+                    <div class="code-line"><span class="gutter">9</span><span class="code-content">const order = calculateTotal(cart);</span></div>
+                </div>
             </div>
             <div class="rounded-lg border border-vscode-border overflow-hidden bg-vscode-bg">
                 <div class="px-3 py-2 bg-vscode-input-bg border-b border-vscode-border flex justify-between items-center">
                     <span class="text-xs font-semibold">${t.preview}</span>
                     <span class="text-[10px] px-2 py-0.5 bg-green-500 text-white rounded-full font-semibold">${t.live}</span>
                 </div>
-                <pre id="previewCode" class="p-3 text-xs leading-relaxed overflow-auto h-40 m-0 bg-vscode-bg"><code class="whitespace-pre">function calculateTotal(items) {
-    let total = 0;
-    for (const item of items) {
-        total += item.price * item.qty;
-    }
-    return total.toFixed(2);
-}
-
-const order = calculateTotal(cart);</code></pre>
+                <div id="previewCode" class="code-preview overflow-auto h-40 m-0 bg-vscode-bg" data-highlight="all">
+                    <div class="code-line"><span class="gutter">1</span><span class="code-content">function calculateTotal(items) {</span></div>
+                    <div class="code-line"><span class="gutter">2</span><span class="code-content">    let total = 0;</span></div>
+                    <div class="code-line active-line"><span class="gutter">3</span><span class="code-content">    for (const item of items) {</span></div>
+                    <div class="code-line"><span class="gutter">4</span><span class="code-content">        total += item.price * item.qty;</span></div>
+                    <div class="code-line"><span class="gutter">5</span><span class="code-content">    }</span></div>
+                    <div class="code-line"><span class="gutter">6</span><span class="code-content">    return total.toFixed(2);</span></div>
+                    <div class="code-line"><span class="gutter">7</span><span class="code-content">}</span></div>
+                    <div class="code-line"><span class="gutter">8</span><span class="code-content"></span></div>
+                    <div class="code-line"><span class="gutter">9</span><span class="code-content">const order = calculateTotal(cart);</span></div>
+                </div>
             </div>
         </div>
     </section>
@@ -543,22 +606,25 @@ const order = calculateTotal(cart);</code></pre>
             document.getElementById('origFontWeight').textContent = settings.fontWeight === 'normal' ? '400' : (settings.fontWeight || '400');
         }
 
+        function applyStylesToPreview(container, fontSize, lineHeight, fontWeight, letterSpacing, lineHighlight) {
+            container.style.fontSize = fontSize + 'px';
+            container.style.lineHeight = getLineHeightCss(lineHeight);
+            container.style.fontWeight = fontWeight === 'normal' ? '400' : fontWeight;
+            container.style.letterSpacing = letterSpacing + 'px';
+            container.dataset.highlight = lineHighlight || 'all';
+        }
+
         function updateComparisonPreview() {
             if (originalSettings) {
                 const fs = originalSettings.fontSize || 14;
                 const lh = originalSettings.lineHeight;
                 const wt = originalSettings.fontWeight || 'normal';
                 const sp = originalSettings.letterSpacing || 0;
-                originalPreview.style.fontSize = fs + 'px';
-                originalPreview.style.lineHeight = getLineHeightCss(lh);
-                originalPreview.style.fontWeight = wt === 'normal' ? '400' : wt;
-                originalPreview.style.letterSpacing = sp + 'px';
+                const hl = originalSettings.renderLineHighlight || 'all';
+                applyStylesToPreview(originalPreview, fs, lh, wt, sp, hl);
             }
             const s = collectSliderSettings();
-            previewCode.style.fontSize = s.fontSize + 'px';
-            previewCode.style.lineHeight = getLineHeightCss(s.lineHeight);
-            previewCode.style.fontWeight = s.fontWeight === 'normal' ? '400' : s.fontWeight;
-            previewCode.style.letterSpacing = s.letterSpacing + 'px';
+            applyStylesToPreview(previewCode, s.fontSize, s.lineHeight, s.fontWeight, s.letterSpacing, s.renderLineHighlight);
         }
 
         function collectDiagnosticInput() {
@@ -584,12 +650,14 @@ const order = calculateTotal(cart);</code></pre>
             const letterSpacing = parseFloat(document.getElementById('letterSpacing').value) || 0;
             const fontWeight = parseInt(document.getElementById('fontWeight').value, 10) || 400;
             const cursorWidth = parseInt(document.getElementById('cursorWidth').value, 10) || 2;
+            const renderLineHighlight = document.getElementById('renderLineHighlight').value || 'all';
             return {
                 fontSize,
                 lineHeight,
                 letterSpacing,
                 fontWeight: fontWeight === 400 ? 'normal' : String(fontWeight),
                 cursorWidth,
+                renderLineHighlight,
             };
         }
 
@@ -607,6 +675,10 @@ const order = calculateTotal(cart);</code></pre>
                 updateSliderValue('fontWeight', w);
             }
             if (settings.cursorWidth !== undefined) updateSliderValue('cursorWidth', settings.cursorWidth);
+            if (settings.renderLineHighlight !== undefined) {
+                const selectEl = document.getElementById('renderLineHighlight');
+                if (selectEl) selectEl.value = settings.renderLineHighlight;
+            }
             updateComparisonPreview();
         }
 
@@ -659,6 +731,14 @@ const order = calculateTotal(cart);</code></pre>
                 });
             }
         });
+
+        // Line highlight dropdown change handler
+        const lineHighlightSelect = document.getElementById('renderLineHighlight');
+        if (lineHighlightSelect) {
+            lineHighlightSelect.addEventListener('change', () => {
+                updateComparisonPreview();
+            });
+        }
 
         window.addEventListener('message', event => {
             const msg = event.data;

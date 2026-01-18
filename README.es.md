@@ -46,13 +46,14 @@ code --install-extension AgusRdz.harmonia-vision
 
 Harmonia Vision puede ajustar las siguientes configuraciones de VS Code:
 
-| Configuración          | Descripción                   | Rango       |
-| ---------------------- | ----------------------------- | ----------- |
-| `editor.fontSize`      | Tamaño de fuente en píxeles   | 12-32px     |
-| `editor.lineHeight`    | Proporción de altura de línea | Auto a 2.2x |
-| `editor.letterSpacing` | Espacio entre letras          | 0-1.5px     |
-| `editor.fontWeight`    | Grosor de fuente              | 300-700     |
-| `editor.cursorWidth`   | Ancho del cursor en píxeles   | 1-5px       |
+| Configuración                 | Descripción                   | Rango                             |
+| ----------------------------- | ----------------------------- | --------------------------------- |
+| `editor.fontSize`             | Tamaño de fuente en píxeles   | 12-32px                           |
+| `editor.lineHeight`           | Proporción de altura de línea | Auto a 2.2x                       |
+| `editor.letterSpacing`        | Espacio entre letras          | 0-1.5px                           |
+| `editor.fontWeight`           | Grosor de fuente              | 300-700                           |
+| `editor.cursorWidth`          | Ancho del cursor en píxeles   | 1-5px                             |
+| `editor.renderLineHighlight`  | Resaltado de línea actual     | Ninguno, Margen, Línea, Todo      |
 
 ## Entendiendo los Valores de la Receta
 
