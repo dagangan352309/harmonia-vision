@@ -111,6 +111,22 @@ export interface Translations {
     pauseStatusOnBreak: string;
     pauseMinutes: string;
     pauseSeconds: string;
+
+    // Stats
+    statsSection: string;
+    statsToday: string;
+    statsWeek: string;
+    statsAllTime: string;
+    statsBreaksTaken: string;
+    statsSnoozed: string;
+    statsDismissed: string;
+    statsRestTime: string;
+    statsCompliance: string;
+    statsCurrentStreak: string;
+    statsLongestStreak: string;
+    statsDays: string;
+    statsReset: string;
+    statsNoData: string;
 }
 
 const en: Translations = {
@@ -219,6 +235,22 @@ const en: Translations = {
     pauseStatusOnBreak: 'On Break',
     pauseMinutes: 'min',
     pauseSeconds: 'sec',
+
+    // Stats
+    statsSection: 'Break Statistics',
+    statsToday: 'Today',
+    statsWeek: 'This Week',
+    statsAllTime: 'All Time',
+    statsBreaksTaken: 'Breaks Taken',
+    statsSnoozed: 'Snoozed',
+    statsDismissed: 'Dismissed',
+    statsRestTime: 'Rest Time',
+    statsCompliance: 'Compliance',
+    statsCurrentStreak: 'Current Streak',
+    statsLongestStreak: 'Best Streak',
+    statsDays: 'days',
+    statsReset: 'Reset Stats',
+    statsNoData: 'No data yet. Enable reminders to start tracking.',
 };
 
 const es: Translations = {
@@ -327,6 +359,22 @@ const es: Translations = {
     pauseStatusOnBreak: 'En Descanso',
     pauseMinutes: 'min',
     pauseSeconds: 'seg',
+
+    // Stats
+    statsSection: 'Estadisticas de Descansos',
+    statsToday: 'Hoy',
+    statsWeek: 'Esta Semana',
+    statsAllTime: 'Todo el Tiempo',
+    statsBreaksTaken: 'Descansos Tomados',
+    statsSnoozed: 'Pospuestos',
+    statsDismissed: 'Descartados',
+    statsRestTime: 'Tiempo de Descanso',
+    statsCompliance: 'Cumplimiento',
+    statsCurrentStreak: 'Racha Actual',
+    statsLongestStreak: 'Mejor Racha',
+    statsDays: 'dias',
+    statsReset: 'Reiniciar Stats',
+    statsNoData: 'Sin datos aun. Activa los recordatorios para empezar.',
 };
 
 const translations: Record<string, Translations> = {

@@ -3,6 +3,7 @@
   "command.togglePause": "Harmonia Vision: Activar/Desactivar Recordatorios de Descanso",
   "command.pauseNow": "Harmonia Vision: Tomar Descanso Ahora",
   "command.snoozePause": "Harmonia Vision: Posponer Descanso",
+  "command.openStats": "Harmonia Vision: Abrir Estadisticas de Descansos",
   "extension.description": "Calibra la legibilidad del editor y reduce la fatiga visual mediante recomendaciones de configuracion ergonomica",
   "config.pause.enabled": "Activar recordatorios de descanso ocular (regla 20-20-20)",
   "config.pause.workIntervalMinutes": "Minutos entre descansos (15-60)",

@@ -1,5 +1,6 @@
 import * as vscode from 'vscode';
 import { CalibratorPanel } from './panels/CalibratorPanel';
+import { StatsPanel } from './panels/StatsPanel';
 import { PauseManager } from './logic/pauseManager';
 
 let pauseManager: PauseManager | undefined;
@@ -51,6 +52,15 @@ export function activate(context: vscode.ExtensionContext): void {
         }
     );
     context.subscriptions.push(snoozePauseCommand);
+
+    // Register open stats command
+    const openStatsCommand = vscode.commands.registerCommand(
+        'harmoniaVision.openStats',
+        () => {
+            StatsPanel.createOrShow(context, pauseManager);
+        }
+    );
+    context.subscriptions.push(openStatsCommand);
 
     // Track user activity for idle detection
     const activityEvents = [

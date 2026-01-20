@@ -1,5 +1,28 @@
 # Changelog
 
+## [1.3.0] - 2026-01-19
+
+### Added
+
+- **Break Statistics** (New dedicated panel)
+  - New command: `Harmonia Vision: Open Break Statistics`
+  - Track breaks taken, snoozed, and dismissed
+  - Daily and weekly summaries with compliance rate
+  - Current and longest streak tracking
+  - Total rest time accumulated
+  - Clean UI with icons and visual indicators
+  - All data stored locally (privacy-first)
+  - Reset statistics option
+
+### Technical
+
+- Added `StatsPanel` class for dedicated statistics webview
+- Added `PauseStats` class for local statistics storage
+- Statistics persisted in `globalState` (90-day retention)
+- Integrated stats tracking into `PauseManager`
+
+---
+
 ## [1.2.0] - 2026-01-19
 
 ### Added

@@ -14,6 +14,7 @@ Harmonia Vision is a VS Code extension that helps you calibrate editor readabili
 - **Live Preview** - Compare original vs. recommended settings side-by-side before applying
 - **Safe Apply Model** - Preview changes temporarily, save when satisfied, or revert instantly
 - **Eye Break Reminders** - Follow the 20-20-20 rule with customizable break reminders and status bar countdown
+- **Break Statistics** - Track your eye health habits with local-only statistics (streaks, compliance rate, rest time)
 - **Theme Agnostic** - Works with any VS Code theme
 - **Bilingual Support** - Available in English and Spanish (auto-detected)
 

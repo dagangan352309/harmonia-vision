@@ -14,6 +14,7 @@
 
 import * as vscode from 'vscode';
 import { getRandomTip } from './pauseTips';
+import { PauseStats, PauseStatsSummary } from './pauseStats';
 
 // ─────────────────────────────────────────────────────────────────────────────
 // Types
@@ -62,6 +63,7 @@ export class PauseManager implements vscode.Disposable {
     private _idleCheckInterval: NodeJS.Timeout | null = null;
     private _disposables: vscode.Disposable[] = [];
     private _stateChangeCallbacks: Array<(state: PauseState) => void> = [];
+    private _stats: PauseStats;
 
     // Idle threshold: 2 minutes of no activity
     private static readonly IDLE_THRESHOLD_MS = 2 * 60 * 1000;
@@ -69,8 +71,9 @@ export class PauseManager implements vscode.Disposable {
     constructor(globalState: vscode.Memento) {
         this._globalState = globalState;
 
-        // Load settings from storage
+        // Load settings and stats from storage
         this._settings = this._loadSettings();
+        this._stats = new PauseStats(globalState);
 
         // Create status bar item
         this._statusBarItem = vscode.window.createStatusBarItem(
@@ -159,13 +162,28 @@ export class PauseManager implements vscode.Disposable {
     /**
      * Snoozes the current reminder for 5 minutes.
      */
-    public snooze(): void {
+    public async snooze(): Promise<void> {
+        await this._stats.recordBreakSnoozed();
         this._isOnBreak = false;
         this._remainingSeconds = 5 * 60; // 5 minutes
         this._updateStatusBar();
         this._notifyStateChange();
 
         vscode.window.showInformationMessage('Harmonia Vision: Snoozed for 5 minutes.');
+    }
+
+    /**
+     * Gets statistics summary.
+     */
+    public getStats(): PauseStatsSummary {
+        return this._stats.getSummary();
+    }
+
+    /**
+     * Resets all statistics.
+     */
+    public async resetStats(): Promise<void> {
+        await this._stats.reset();
     }
 
     /**
@@ -283,7 +301,8 @@ export class PauseManager implements vscode.Disposable {
 
         if (this._remainingSeconds <= 0) {
             if (this._isOnBreak) {
-                // Break is over, start work interval
+                // Break is over, record and start work interval
+                this._stats.recordBreakTaken(this._settings.breakDurationSeconds);
                 this._isOnBreak = false;
                 this._remainingSeconds = this._settings.workIntervalMinutes * 60;
             } else {
@@ -314,8 +333,15 @@ export class PauseManager implements vscode.Disposable {
         vscode.window.showInformationMessage(message, dismissLabel, snoozeLabel).then((action) => {
             if (action === snoozeLabel) {
                 this.snooze();
+            } else if (action === dismissLabel) {
+                // User explicitly dismissed
+                this._stats.recordBreakDismissed();
+                this._isOnBreak = false;
+                this._remainingSeconds = this._settings.workIntervalMinutes * 60;
+                this._updateStatusBar();
+                this._notifyStateChange();
             } else {
-                // User dismissed or closed - continue with break timer
+                // User closed notification - continue with break timer
                 this._isOnBreak = true;
                 this._remainingSeconds = this._settings.breakDurationSeconds;
                 this._notifyStateChange();
