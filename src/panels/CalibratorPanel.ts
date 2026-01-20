@@ -7,6 +7,7 @@ import {
     EditorSettings,
 } from '../logic/recommendations';
 import { SettingsManager, EditorSettingsSnapshot, LineHighlightType } from '../logic/settingsManager';
+import { PauseManager, PauseSettings, PauseState } from '../logic/pauseManager';
 import { debounce } from '../utils/throttle';
 import { getTranslations } from '../i18n/translations';
 
@@ -39,15 +40,21 @@ export class CalibratorPanel implements vscode.Disposable {
     private readonly _panel: vscode.WebviewPanel;
     private readonly _context: vscode.ExtensionContext;
     private readonly _settingsManager: SettingsManager;
+    private readonly _pauseManager: PauseManager | undefined;
     private _disposables: vscode.Disposable[] = [];
 
     // Debounced apply function (200ms delay)
     private readonly _debouncedApply: (settings: EditorSettingsSnapshot) => void;
 
-    private constructor(panel: vscode.WebviewPanel, context: vscode.ExtensionContext) {
+    private constructor(
+        panel: vscode.WebviewPanel,
+        context: vscode.ExtensionContext,
+        pauseManager?: PauseManager
+    ) {
         this._panel = panel;
         this._context = context;
         this._settingsManager = new SettingsManager(context.globalState);
+        this._pauseManager = pauseManager;
 
         // Create debounced apply function
         this._debouncedApply = debounce(
@@ -93,6 +100,14 @@ export class CalibratorPanel implements vscode.Disposable {
             }
         });
         this._disposables.push(configListener);
+
+        // Listen for pause state changes
+        if (this._pauseManager) {
+            const pauseListener = this._pauseManager.onStateChange((state) => {
+                this._sendPauseStateToWebview(state);
+            });
+            this._disposables.push(pauseListener);
+        }
     }
 
     private async _initializeSnapshot(): Promise<void> {
@@ -100,7 +115,10 @@ export class CalibratorPanel implements vscode.Disposable {
         await this._settingsManager.captureSnapshot(false);
     }
 
-    public static createOrShow(context: vscode.ExtensionContext): void {
+    public static createOrShow(
+        context: vscode.ExtensionContext,
+        pauseManager?: PauseManager
+    ): void {
         const column = vscode.window.activeTextEditor
             ? vscode.window.activeTextEditor.viewColumn
             : undefined;
@@ -124,7 +142,7 @@ export class CalibratorPanel implements vscode.Disposable {
             }
         );
 
-        CalibratorPanel.currentPanel = new CalibratorPanel(panel, context);
+        CalibratorPanel.currentPanel = new CalibratorPanel(panel, context, pauseManager);
     }
 
     public dispose(): void {
@@ -184,6 +202,21 @@ export class CalibratorPanel implements vscode.Disposable {
             case 'getInitialState':
                 this._sendFullStateToWebview();
                 break;
+            // Pause-related commands
+            case 'getPauseState':
+                this._sendPauseStateToWebview();
+                break;
+            case 'updatePauseSettings':
+                if (message.payload && this._isPauseSettingsPayload(message.payload)) {
+                    this._handleUpdatePauseSettings(message.payload);
+                }
+                break;
+            case 'togglePause':
+                this._handleTogglePause();
+                break;
+            case 'triggerPauseNow':
+                this._handleTriggerPauseNow();
+                break;
         }
     }
 
@@ -193,6 +226,10 @@ export class CalibratorPanel implements vscode.Disposable {
 
     private _isSettingsPayload(payload: unknown): payload is SettingsPayload {
         return typeof payload === 'object' && payload !== null && 'fontSize' in payload;
+    }
+
+    private _isPauseSettingsPayload(payload: unknown): payload is Partial<PauseSettings> {
+        return typeof payload === 'object' && payload !== null;
     }
 
     private _computeAndSendRecommendations(input: RecommendationInput): void {
@@ -321,5 +358,48 @@ export class CalibratorPanel implements vscode.Disposable {
                 hasSnapshot,
             },
         });
+
+        // Also send pause state
+        this._sendPauseStateToWebview();
+    }
+
+    // ─────────────────────────────────────────────────────────────────────────
+    // Pause Feature Methods
+    // ─────────────────────────────────────────────────────────────────────────
+
+    private _sendPauseStateToWebview(state?: PauseState): void {
+        if (!this._pauseManager) {
+            return;
+        }
+
+        const pauseState = state || this._pauseManager.getState();
+        this._panel.webview.postMessage({
+            command: 'pauseState',
+            payload: pauseState,
+        });
+    }
+
+    private async _handleUpdatePauseSettings(settings: Partial<PauseSettings>): Promise<void> {
+        if (!this._pauseManager) {
+            return;
+        }
+
+        await this._pauseManager.updateSettings(settings);
+    }
+
+    private async _handleTogglePause(): Promise<void> {
+        if (!this._pauseManager) {
+            return;
+        }
+
+        await this._pauseManager.toggle();
+    }
+
+    private _handleTriggerPauseNow(): void {
+        if (!this._pauseManager) {
+            return;
+        }
+
+        this._pauseManager.triggerBreakNow();
     }
 }

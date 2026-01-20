@@ -1,4 +1,12 @@
 {
   "command.openCalibrator": "Harmonia Vision: Open Calibrator",
-  "extension.description": "Calibrate editor readability and reduce visual fatigue through ergonomic configuration recommendations"
+  "command.togglePause": "Harmonia Vision: Toggle Eye Break Reminders",
+  "command.pauseNow": "Harmonia Vision: Take Eye Break Now",
+  "command.snoozePause": "Harmonia Vision: Snooze Eye Break",
+  "extension.description": "Calibrate editor readability and reduce visual fatigue through ergonomic configuration recommendations",
+  "config.pause.enabled": "Enable eye break reminders (20-20-20 rule)",
+  "config.pause.workIntervalMinutes": "Minutes between eye breaks (15-60)",
+  "config.pause.breakDurationSeconds": "Duration of each break in seconds (10-60)",
+  "config.pause.showStatusBar": "Show countdown timer in status bar",
+  "config.pause.pauseWhenIdle": "Pause timer when no activity is detected"
 }

@@ -13,6 +13,7 @@ Harmonia Vision es una extensión de VS Code que te ayuda a calibrar la legibili
 - **Recomendaciones Inteligentes** - Obtén configuraciones personalizadas basadas en tu perfil visual.
 - **Vista Previa en Vivo** - Compara la configuración original vs. la recomendada lado a lado antes de aplicar.
 - **Modelo de Aplicación Segura** - Previsualiza cambios temporalmente, guarda cuando estés satisfecho o revierte instantáneamente.
+- **Recordatorios de Descanso** - Sigue la regla 20-20-20 con recordatorios personalizables y cuenta regresiva en la barra de estado.
 - **Agnóstico de Tema** - Funciona con cualquier tema de VS Code.
 - **Soporte Bilingüe** - Disponible en inglés y español (auto-detectado).
 
@@ -42,18 +43,53 @@ code --install-extension AgusRdz.harmonia-vision
 8. Haz clic en "Vista Previa" para probar en tu editor.
 9. Haz clic en "Guardar" para aplicar permanentemente, o "Revertir" para volver atrás.
 
-## Configuraciones Ajustadas
+## Configuraciones del Editor Ajustadas
 
-Harmonia Vision puede ajustar las siguientes configuraciones de VS Code:
+Harmonia Vision puede ajustar las siguientes configuraciones del editor de VS Code:
 
-| Configuración                 | Descripción                   | Rango                             |
-| ----------------------------- | ----------------------------- | --------------------------------- |
-| `editor.fontSize`             | Tamaño de fuente en píxeles   | 12-32px                           |
-| `editor.lineHeight`           | Proporción de altura de línea | Auto a 2.2x                       |
-| `editor.letterSpacing`        | Espacio entre letras          | 0-1.5px                           |
-| `editor.fontWeight`           | Grosor de fuente              | 300-700                           |
-| `editor.cursorWidth`          | Ancho del cursor en píxeles   | 1-5px                             |
-| `editor.renderLineHighlight`  | Resaltado de línea actual     | Ninguno, Margen, Línea, Todo      |
+| Configuración                | Descripción                   | Rango                        |
+| ---------------------------- | ----------------------------- | ---------------------------- |
+| `editor.fontSize`            | Tamaño de fuente en píxeles   | 12-32px                      |
+| `editor.lineHeight`          | Proporción de altura de línea | Auto a 2.2x                  |
+| `editor.letterSpacing`       | Espacio entre letras          | 0-1.5px                      |
+| `editor.fontWeight`          | Grosor de fuente              | 300-700                      |
+| `editor.cursorWidth`         | Ancho del cursor en píxeles   | 1-5px                        |
+| `editor.renderLineHighlight` | Resaltado de línea actual     | Ninguno, Margen, Línea, Todo |
+
+## Recordatorios de Descanso (Regla 20-20-20)
+
+La regla 20-20-20 es una práctica simple para reducir la fatiga ocular: cada 20 minutos, mira algo a 6 metros de distancia durante 20 segundos.
+
+Harmonia Vision incluye recordatorios de descanso integrados para ayudarte a seguir esta regla:
+
+### Características
+
+- **Intervalos Personalizables** - Configura intervalos de trabajo de 15-60 minutos
+- **Duración del Descanso** - Configura descansos de 10-60 segundos
+- **Cuenta Regresiva en Barra de Estado** - Ve el tiempo restante hasta tu próximo descanso
+- **Consejos Aleatorios** - Cada recordatorio incluye un consejo útil para la salud ocular
+- **Detección de Inactividad** - El temporizador se pausa automáticamente cuando no estás programando activamente
+- **Opción de Posponer** - Retrasa un recordatorio por 5 minutos cuando lo necesites
+
+### Comandos
+
+| Comando                                                         | Descripción                                   |
+| --------------------------------------------------------------- | --------------------------------------------- |
+| `Harmonia Vision: Activar/Desactivar Recordatorios de Descanso` | Activar o desactivar los recordatorios        |
+| `Harmonia Vision: Tomar Descanso Ahora`                         | Activar un descanso inmediato                 |
+| `Harmonia Vision: Posponer Descanso`                            | Posponer el recordatorio actual por 5 minutos |
+
+### Configuraciones
+
+Configura en Configuración de VS Code o a través del panel Calibrador:
+
+| Configuración                               | Descripción                                 | Predeterminado |
+| ------------------------------------------- | ------------------------------------------- | -------------- |
+| `harmoniaVision.pause.enabled`              | Activar recordatorios de descanso           | `false`        |
+| `harmoniaVision.pause.workIntervalMinutes`  | Minutos entre descansos (15-60)             | `20`           |
+| `harmoniaVision.pause.breakDurationSeconds` | Duración del descanso en segundos (10-60)   | `20`           |
+| `harmoniaVision.pause.showStatusBar`        | Mostrar cuenta regresiva en barra de estado | `true`         |
+| `harmoniaVision.pause.pauseWhenIdle`        | Pausar temporizador cuando está inactivo    | `true`         |
 
 ## Entendiendo los Valores de la Receta
 

@@ -90,6 +90,27 @@ export interface Translations {
         fontWeight: string;
         cursorWidth: string;
     };
+
+    // Pause/Eye Break Feature
+    pauseSection: string;
+    pauseSectionDesc: string;
+    pauseEnabled: string;
+    pauseEnabledDesc: string;
+    pauseWorkInterval: string;
+    pauseWorkIntervalDesc: string;
+    pauseBreakDuration: string;
+    pauseBreakDurationDesc: string;
+    pauseShowStatusBar: string;
+    pauseShowStatusBarDesc: string;
+    pauseWhenIdle: string;
+    pauseWhenIdleDesc: string;
+    pauseTakeBreakNow: string;
+    pauseStatus: string;
+    pauseStatusActive: string;
+    pauseStatusInactive: string;
+    pauseStatusOnBreak: string;
+    pauseMinutes: string;
+    pauseSeconds: string;
 }
 
 const en: Translations = {
@@ -177,6 +198,27 @@ const en: Translations = {
         fontWeight: 'Font Weight',
         cursorWidth: 'Cursor Width',
     },
+
+    // Pause/Eye Break Feature
+    pauseSection: 'Eye Break Reminders',
+    pauseSectionDesc: 'Follow the 20-20-20 rule for eye health',
+    pauseEnabled: 'Enable reminders',
+    pauseEnabledDesc: 'Get periodic reminders to rest your eyes',
+    pauseWorkInterval: 'Work interval',
+    pauseWorkIntervalDesc: 'Time between breaks',
+    pauseBreakDuration: 'Break duration',
+    pauseBreakDurationDesc: 'How long each break lasts',
+    pauseShowStatusBar: 'Show countdown',
+    pauseShowStatusBarDesc: 'Display timer in status bar',
+    pauseWhenIdle: 'Pause when idle',
+    pauseWhenIdleDesc: 'Stop timer when not actively coding',
+    pauseTakeBreakNow: 'Take Break Now',
+    pauseStatus: 'Status',
+    pauseStatusActive: 'Active',
+    pauseStatusInactive: 'Inactive',
+    pauseStatusOnBreak: 'On Break',
+    pauseMinutes: 'min',
+    pauseSeconds: 'sec',
 };
 
 const es: Translations = {
@@ -264,6 +306,27 @@ const es: Translations = {
         fontWeight: 'Grosor de Fuente',
         cursorWidth: 'Ancho del Cursor',
     },
+
+    // Pause/Eye Break Feature
+    pauseSection: 'Recordatorios de Descanso',
+    pauseSectionDesc: 'Sigue la regla 20-20-20 para la salud ocular',
+    pauseEnabled: 'Activar recordatorios',
+    pauseEnabledDesc: 'Recibe recordatorios periodicos para descansar los ojos',
+    pauseWorkInterval: 'Intervalo de trabajo',
+    pauseWorkIntervalDesc: 'Tiempo entre descansos',
+    pauseBreakDuration: 'Duracion del descanso',
+    pauseBreakDurationDesc: 'Cuanto dura cada descanso',
+    pauseShowStatusBar: 'Mostrar cuenta regresiva',
+    pauseShowStatusBarDesc: 'Mostrar temporizador en la barra de estado',
+    pauseWhenIdle: 'Pausar cuando inactivo',
+    pauseWhenIdleDesc: 'Detener temporizador cuando no estas programando',
+    pauseTakeBreakNow: 'Tomar Descanso Ahora',
+    pauseStatus: 'Estado',
+    pauseStatusActive: 'Activo',
+    pauseStatusInactive: 'Inactivo',
+    pauseStatusOnBreak: 'En Descanso',
+    pauseMinutes: 'min',
+    pauseSeconds: 'seg',
 };
 
 const translations: Record<string, Translations> = {

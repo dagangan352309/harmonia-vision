@@ -13,6 +13,7 @@ Harmonia Vision is a VS Code extension that helps you calibrate editor readabili
 - **Smart Recommendations** - Get personalized editor settings based on your visual profile
 - **Live Preview** - Compare original vs. recommended settings side-by-side before applying
 - **Safe Apply Model** - Preview changes temporarily, save when satisfied, or revert instantly
+- **Eye Break Reminders** - Follow the 20-20-20 rule with customizable break reminders and status bar countdown
 - **Theme Agnostic** - Works with any VS Code theme
 - **Bilingual Support** - Available in English and Spanish (auto-detected)
 
@@ -41,18 +42,53 @@ code --install-extension AgusRdz.harmonia-vision
 8. Click "Preview" to test in your editor
 9. Click "Save" to apply permanently, or "Revert" to go back
 
-## Settings Adjusted
+## Editor Settings Adjusted
 
-Harmonia Vision can adjust the following VS Code settings:
+Harmonia Vision can adjust the following VS Code editor settings:
 
-| Setting                       | Description              | Range                          |
-| ----------------------------- | ------------------------ | ------------------------------ |
-| `editor.fontSize`             | Font size in pixels      | 12-32px                        |
-| `editor.lineHeight`           | Line height ratio        | Auto to 2.2x                   |
-| `editor.letterSpacing`        | Space between letters    | 0-1.5px                        |
-| `editor.fontWeight`           | Font weight              | 300-700                        |
-| `editor.cursorWidth`          | Cursor width in pixels   | 1-5px                          |
-| `editor.renderLineHighlight`  | Current line highlight   | None, Gutter, Line, All        |
+| Setting                      | Description            | Range                   |
+| ---------------------------- | ---------------------- | ----------------------- |
+| `editor.fontSize`            | Font size in pixels    | 12-32px                 |
+| `editor.lineHeight`          | Line height ratio      | Auto to 2.2x            |
+| `editor.letterSpacing`       | Space between letters  | 0-1.5px                 |
+| `editor.fontWeight`          | Font weight            | 300-700                 |
+| `editor.cursorWidth`         | Cursor width in pixels | 1-5px                   |
+| `editor.renderLineHighlight` | Current line highlight | None, Gutter, Line, All |
+
+## Eye Break Reminders (20-20-20 Rule)
+
+The 20-20-20 rule is a simple practice to reduce eye strain: every 20 minutes, look at something 20 feet (6 meters) away for 20 seconds.
+
+Harmonia Vision includes built-in break reminders to help you follow this rule:
+
+### Features
+
+- **Customizable Intervals** - Set work intervals from 15-60 minutes
+- **Break Duration** - Configure breaks from 10-60 seconds
+- **Status Bar Countdown** - See time remaining until your next break
+- **Random Tips** - Each reminder includes a helpful eye health tip
+- **Idle Detection** - Timer pauses automatically when you're not actively coding
+- **Snooze Option** - Delay a reminder by 5 minutes when needed
+
+### Commands
+
+| Command                                       | Description                           |
+| --------------------------------------------- | ------------------------------------- |
+| `Harmonia Vision: Toggle Eye Break Reminders` | Enable or disable break reminders     |
+| `Harmonia Vision: Take Eye Break Now`         | Trigger an immediate break            |
+| `Harmonia Vision: Snooze Eye Break`           | Snooze current reminder for 5 minutes |
+
+### Settings
+
+Configure in VS Code Settings or through the Calibrator panel:
+
+| Setting                                     | Description                       | Default |
+| ------------------------------------------- | --------------------------------- | ------- |
+| `harmoniaVision.pause.enabled`              | Enable eye break reminders        | `false` |
+| `harmoniaVision.pause.workIntervalMinutes`  | Minutes between breaks (15-60)    | `20`    |
+| `harmoniaVision.pause.breakDurationSeconds` | Break duration in seconds (10-60) | `20`    |
+| `harmoniaVision.pause.showStatusBar`        | Show countdown in status bar      | `true`  |
+| `harmoniaVision.pause.pauseWhenIdle`        | Pause timer when inactive         | `true`  |
 
 ## Understanding Prescription Values
 

@@ -1,5 +1,46 @@
 # Changelog
 
+## [1.2.0] - 2026-01-19
+
+### Added
+
+- **Eye Break Reminders (20-20-20 Rule)**
+  - Customizable work intervals (15-60 minutes, default 20)
+  - Configurable break duration (10-60 seconds, default 20)
+  - Status bar countdown timer with visual indicators
+  - Random bilingual eye health tips (EN/ES) with each reminder
+  - Idle detection to pause timer when not actively coding
+  - Snooze functionality (5 minutes)
+
+- **New Commands**
+  - `Harmonia Vision: Toggle Eye Break Reminders` - Enable/disable reminders
+  - `Harmonia Vision: Take Eye Break Now` - Trigger immediate break
+  - `Harmonia Vision: Snooze Eye Break` - Snooze current reminder
+
+- **New Settings**
+  - `harmoniaVision.pause.enabled` - Enable eye break reminders
+  - `harmoniaVision.pause.workIntervalMinutes` - Time between breaks
+  - `harmoniaVision.pause.breakDurationSeconds` - Break duration
+  - `harmoniaVision.pause.showStatusBar` - Show/hide status bar countdown
+  - `harmoniaVision.pause.pauseWhenIdle` - Pause timer when inactive
+
+- **Calibrator Panel Integration**
+  - New "Eye Break Reminders" section in the Calibrator UI
+  - Toggle switch to enable/disable reminders
+  - Sliders for work interval and break duration
+  - Checkboxes for status bar and idle detection options
+  - "Take Break Now" button for manual breaks
+  - Real-time status badge (Active/Inactive/On Break)
+
+### Technical
+
+- Added `PauseManager` class for timer and notification logic
+- Added `pauseTips.ts` with 15 bilingual eye health tips
+- Activity tracking via editor events for idle detection
+- State persistence across VS Code sessions via `globalState`
+
+---
+
 ## [1.1.0] - 2026-01-18
 
 ### Added

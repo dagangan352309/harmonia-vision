@@ -7,9 +7,55 @@
     "commands": [
       {
         "command": "harmoniaVision.openCalibrator",
-        "title": "Harmonia Vision: Open Calibrator"
+        "title": "%command.openCalibrator%"
+      },
+      {
+        "command": "harmoniaVision.togglePause",
+        "title": "%command.togglePause%"
+      },
+      {
+        "command": "harmoniaVision.pauseNow",
+        "title": "%command.pauseNow%"
+      },
+      {
+        "command": "harmoniaVision.snoozePause",
+        "title": "%command.snoozePause%"
       }
-    ]
+    ],
+    "configuration": {
+      "title": "Harmonia Vision",
+      "properties": {
+        "harmoniaVision.pause.enabled": {
+          "type": "boolean",
+          "default": false,
+          "description": "%config.pause.enabled%"
+        },
+        "harmoniaVision.pause.workIntervalMinutes": {
+          "type": "number",
+          "default": 20,
+          "minimum": 15,
+          "maximum": 60,
+          "description": "%config.pause.workIntervalMinutes%"
+        },
+        "harmoniaVision.pause.breakDurationSeconds": {
+          "type": "number",
+          "default": 20,
+          "minimum": 10,
+          "maximum": 60,
+          "description": "%config.pause.breakDurationSeconds%"
+        },
+        "harmoniaVision.pause.showStatusBar": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.pause.showStatusBar%"
+        },
+        "harmoniaVision.pause.pauseWhenIdle": {
+          "type": "boolean",
+          "default": true,
+          "description": "%config.pause.pauseWhenIdle%"
+        }
+      }
+    }
   },
   "description": "Calibrate editor readability and reduce visual fatigue through ergonomic configuration recommendations",
   "devDependencies": {
@@ -56,5 +102,5 @@
     "vscode:prepublish": "npm run compile",
     "watch": "tsc -watch -p ./"
   },
-  "version": "1.1.0"
+  "version": "1.2.0"
 }

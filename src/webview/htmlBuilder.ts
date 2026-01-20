@@ -470,6 +470,99 @@ export function getWebviewContent(
         </div>
     </section>
 
+    <!-- Eye Break Reminders -->
+    <section class="mb-6 p-5 rounded-lg border border-vscode-border bg-vscode-sidebar">
+        <div class="flex items-center gap-3 mb-5">
+            <div class="w-9 h-9 rounded-lg bg-vscode-input-bg flex items-center justify-center">
+                <svg class="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="1.5" d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z"/>
+                </svg>
+            </div>
+            <div class="flex-1">
+                <h2 class="font-semibold">${t.pauseSection}</h2>
+                <p class="text-xs text-vscode-muted">${t.pauseSectionDesc}</p>
+            </div>
+            <div id="pauseStatusBadge" class="text-[10px] px-2 py-1 rounded-full font-semibold bg-gray-500/20 text-gray-400">
+                ${t.pauseStatusInactive}
+            </div>
+        </div>
+
+        <div class="space-y-4">
+            <!-- Enable Toggle -->
+            <label class="flex items-center justify-between p-3 rounded-lg bg-vscode-input-bg cursor-pointer hover:opacity-90 transition-opacity">
+                <div>
+                    <span class="text-sm font-medium block">${t.pauseEnabled}</span>
+                    <span class="text-[10px] text-vscode-muted">${t.pauseEnabledDesc}</span>
+                </div>
+                <div class="relative">
+                    <input type="checkbox" id="pauseEnabled" class="sr-only peer">
+                    <div class="w-11 h-6 bg-gray-600 peer-focus:outline-none rounded-full peer peer-checked:after:translate-x-full after:content-[''] after:absolute after:top-[2px] after:left-[2px] after:bg-white after:rounded-full after:h-5 after:w-5 after:transition-all peer-checked:bg-green-500"></div>
+                </div>
+            </label>
+
+            <!-- Work Interval Slider -->
+            <div id="pauseSettingsContainer" class="space-y-4 opacity-50 pointer-events-none">
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <label class="text-sm font-medium">${t.pauseWorkInterval}</label>
+                            <p class="text-[10px] text-vscode-muted">${t.pauseWorkIntervalDesc}</p>
+                        </div>
+                        <span id="pauseWorkIntervalValue" class="text-xs font-semibold px-2 py-0.5 bg-vscode-btn/20 text-vscode-btn rounded">20 ${t.pauseMinutes}</span>
+                    </div>
+                    <input type="range" id="pauseWorkInterval" min="15" max="60" value="20" class="slider w-full">
+                    <div class="flex justify-between text-[10px] text-vscode-muted mt-1">
+                        <span>15 ${t.pauseMinutes}</span>
+                        <span>60 ${t.pauseMinutes}</span>
+                    </div>
+                </div>
+
+                <!-- Break Duration Slider -->
+                <div>
+                    <div class="flex justify-between items-center mb-2">
+                        <div>
+                            <label class="text-sm font-medium">${t.pauseBreakDuration}</label>
+                            <p class="text-[10px] text-vscode-muted">${t.pauseBreakDurationDesc}</p>
+                        </div>
+                        <span id="pauseBreakDurationValue" class="text-xs font-semibold px-2 py-0.5 bg-vscode-btn/20 text-vscode-btn rounded">20 ${t.pauseSeconds}</span>
+                    </div>
+                    <input type="range" id="pauseBreakDuration" min="10" max="60" value="20" class="slider w-full">
+                    <div class="flex justify-between text-[10px] text-vscode-muted mt-1">
+                        <span>10 ${t.pauseSeconds}</span>
+                        <span>60 ${t.pauseSeconds}</span>
+                    </div>
+                </div>
+
+                <!-- Checkboxes -->
+                <div class="grid grid-cols-2 gap-3">
+                    <label class="flex items-center gap-2 p-3 rounded-lg bg-vscode-input-bg cursor-pointer hover:opacity-90">
+                        <input type="checkbox" id="pauseShowStatusBar" checked class="w-4 h-4 rounded border-gray-600 bg-vscode-bg text-vscode-btn focus:ring-vscode-btn">
+                        <div>
+                            <span class="text-xs font-medium block">${t.pauseShowStatusBar}</span>
+                            <span class="text-[10px] text-vscode-muted">${t.pauseShowStatusBarDesc}</span>
+                        </div>
+                    </label>
+                    <label class="flex items-center gap-2 p-3 rounded-lg bg-vscode-input-bg cursor-pointer hover:opacity-90">
+                        <input type="checkbox" id="pauseWhenIdle" checked class="w-4 h-4 rounded border-gray-600 bg-vscode-bg text-vscode-btn focus:ring-vscode-btn">
+                        <div>
+                            <span class="text-xs font-medium block">${t.pauseWhenIdle}</span>
+                            <span class="text-[10px] text-vscode-muted">${t.pauseWhenIdleDesc}</span>
+                        </div>
+                    </label>
+                </div>
+
+                <!-- Take Break Now Button -->
+                <button id="takeBreakNowBtn" class="w-full py-3 px-4 bg-vscode-input-bg text-vscode-fg rounded-lg font-medium text-sm hover:opacity-80 transition-opacity flex items-center justify-center gap-2 bordered">
+                    <svg class="w-4 h-4" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z"/>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z"/>
+                    </svg>
+                    ${t.pauseTakeBreakNow}
+                </button>
+            </div>
+        </div>
+    </section>
+
     <!-- Live Preview -->
     <section class="mb-24 p-5 rounded-lg border border-vscode-border bg-vscode-sidebar">
         <div class="flex items-center gap-3 mb-4">
@@ -746,6 +839,7 @@ export function getWebviewContent(
                 case 'recommendations': displayRecommendations(msg.payload); break;
                 case 'currentSettings': applySettingsToSliders(msg.payload); break;
                 case 'fullState': handleFullState(msg.payload); break;
+                case 'pauseState': applyPauseState(msg.payload); break;
             }
         });
 
@@ -801,6 +895,142 @@ export function getWebviewContent(
         const cylinderInput = document.getElementById('cylinder');
         if (sphereInput) validateDecimalInput(sphereInput);
         if (cylinderInput) validateDecimalInput(cylinderInput);
+
+        // ─────────────────────────────────────────────────────────────────────
+        // Pause Feature UI
+        // ─────────────────────────────────────────────────────────────────────
+
+        const pauseTranslations = {
+            min: '${t.pauseMinutes}',
+            sec: '${t.pauseSeconds}',
+            active: '${t.pauseStatusActive}',
+            inactive: '${t.pauseStatusInactive}',
+            onBreak: '${t.pauseStatusOnBreak}',
+        };
+
+        const pauseEnabledToggle = document.getElementById('pauseEnabled');
+        const pauseSettingsContainer = document.getElementById('pauseSettingsContainer');
+        const pauseStatusBadge = document.getElementById('pauseStatusBadge');
+        const pauseWorkIntervalSlider = document.getElementById('pauseWorkInterval');
+        const pauseWorkIntervalValue = document.getElementById('pauseWorkIntervalValue');
+        const pauseBreakDurationSlider = document.getElementById('pauseBreakDuration');
+        const pauseBreakDurationValue = document.getElementById('pauseBreakDurationValue');
+        const pauseShowStatusBar = document.getElementById('pauseShowStatusBar');
+        const pauseWhenIdle = document.getElementById('pauseWhenIdle');
+        const takeBreakNowBtn = document.getElementById('takeBreakNowBtn');
+
+        function updatePauseSettingsVisibility(enabled) {
+            if (pauseSettingsContainer) {
+                if (enabled) {
+                    pauseSettingsContainer.classList.remove('opacity-50', 'pointer-events-none');
+                } else {
+                    pauseSettingsContainer.classList.add('opacity-50', 'pointer-events-none');
+                }
+            }
+        }
+
+        function updatePauseStatusBadge(state) {
+            if (!pauseStatusBadge) return;
+
+            if (!state.settings.enabled) {
+                pauseStatusBadge.textContent = pauseTranslations.inactive;
+                pauseStatusBadge.className = 'text-[10px] px-2 py-1 rounded-full font-semibold bg-gray-500/20 text-gray-400';
+            } else if (state.isOnBreak) {
+                pauseStatusBadge.textContent = pauseTranslations.onBreak;
+                pauseStatusBadge.className = 'text-[10px] px-2 py-1 rounded-full font-semibold bg-amber-500/20 text-amber-400';
+            } else {
+                pauseStatusBadge.textContent = pauseTranslations.active;
+                pauseStatusBadge.className = 'text-[10px] px-2 py-1 rounded-full font-semibold bg-green-500/20 text-green-400';
+            }
+        }
+
+        function applyPauseState(state) {
+            if (!state || !state.settings) return;
+
+            // Update toggle
+            if (pauseEnabledToggle) {
+                pauseEnabledToggle.checked = state.settings.enabled;
+            }
+
+            // Update sliders
+            if (pauseWorkIntervalSlider) {
+                pauseWorkIntervalSlider.value = state.settings.workIntervalMinutes;
+                if (pauseWorkIntervalValue) {
+                    pauseWorkIntervalValue.textContent = state.settings.workIntervalMinutes + ' ' + pauseTranslations.min;
+                }
+            }
+
+            if (pauseBreakDurationSlider) {
+                pauseBreakDurationSlider.value = state.settings.breakDurationSeconds;
+                if (pauseBreakDurationValue) {
+                    pauseBreakDurationValue.textContent = state.settings.breakDurationSeconds + ' ' + pauseTranslations.sec;
+                }
+            }
+
+            // Update checkboxes
+            if (pauseShowStatusBar) {
+                pauseShowStatusBar.checked = state.settings.showStatusBar;
+            }
+            if (pauseWhenIdle) {
+                pauseWhenIdle.checked = state.settings.pauseWhenIdle;
+            }
+
+            // Update visibility and status
+            updatePauseSettingsVisibility(state.settings.enabled);
+            updatePauseStatusBadge(state);
+        }
+
+        function sendPauseSettingsUpdate(settings) {
+            vscode.postMessage({ command: 'updatePauseSettings', payload: settings });
+        }
+
+        // Event listeners
+        if (pauseEnabledToggle) {
+            pauseEnabledToggle.addEventListener('change', function(e) {
+                updatePauseSettingsVisibility(e.target.checked);
+                sendPauseSettingsUpdate({ enabled: e.target.checked });
+            });
+        }
+
+        if (pauseWorkIntervalSlider) {
+            pauseWorkIntervalSlider.addEventListener('input', function(e) {
+                if (pauseWorkIntervalValue) {
+                    pauseWorkIntervalValue.textContent = e.target.value + ' ' + pauseTranslations.min;
+                }
+            });
+            pauseWorkIntervalSlider.addEventListener('change', function(e) {
+                sendPauseSettingsUpdate({ workIntervalMinutes: parseInt(e.target.value, 10) });
+            });
+        }
+
+        if (pauseBreakDurationSlider) {
+            pauseBreakDurationSlider.addEventListener('input', function(e) {
+                if (pauseBreakDurationValue) {
+                    pauseBreakDurationValue.textContent = e.target.value + ' ' + pauseTranslations.sec;
+                }
+            });
+            pauseBreakDurationSlider.addEventListener('change', function(e) {
+                sendPauseSettingsUpdate({ breakDurationSeconds: parseInt(e.target.value, 10) });
+            });
+        }
+
+        if (pauseShowStatusBar) {
+            pauseShowStatusBar.addEventListener('change', function(e) {
+                sendPauseSettingsUpdate({ showStatusBar: e.target.checked });
+            });
+        }
+
+        if (pauseWhenIdle) {
+            pauseWhenIdle.addEventListener('change', function(e) {
+                sendPauseSettingsUpdate({ pauseWhenIdle: e.target.checked });
+            });
+        }
+
+        if (takeBreakNowBtn) {
+            takeBreakNowBtn.addEventListener('click', function() {
+                vscode.postMessage({ command: 'triggerPauseNow' });
+            });
+        }
 
         vscode.postMessage({ command: 'getInitialState' });
     </script>
